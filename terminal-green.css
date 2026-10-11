@@ -1,0 +1,276 @@
+/*
+ * Terminal Green — custom Equicord CSS
+ * A dark, phosphor-green terminal-inspired Discord theme.
+ * Visual styling only; does not add terminal functionality.
+ */
+
+:root {
+  --term-bg: #070b08;
+  --term-panel: #0b120d;
+  --term-panel-raised: #101b12;
+  --term-green: #66ff8a;
+  --term-green-bright: #a4ffb6;
+  --term-dim: #4aa866;
+  --term-text: #d4f8dc;
+  --term-muted: #86a891;
+  --term-border: #234d30;
+  --term-selection: #174b2a;
+  --term-glow: 0 0 8px rgb(72 255 123 / 12%);
+}
+
+/* Global palette */
+.theme-dark,
+.theme-darker,
+html,
+body {
+  background-color: var(--term-bg) !important;
+  color: var(--term-text);
+  scrollbar-color: var(--term-dim) var(--term-bg);
+}
+
+body {
+  font-family: "Cascadia Code", "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+}
+
+/* Gentle CRT scanlines; pointer events remain untouched */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0%) 0,
+    rgb(0 0 0 / 0%) 3px,
+    rgb(0 0 0 / 10%) 4px
+  );
+  opacity: 0.22;
+}
+
+/* Main application surfaces */
+[class*="appMount"],
+[class*="app_"],
+[class*="bg_"],
+[class*="chat_"],
+[class*="chatContent"],
+[class*="container_"],
+[class*="sidebar_"],
+[class*="membersWrap"],
+[class*="members_"],
+[class*="contentRegion"],
+[class*="standardSidebarView"] {
+  background-color: var(--term-bg) !important;
+}
+
+/* Sidebars, channel list, member list */
+[class*="guilds"],
+[class*="sidebar"],
+[class*="privateChannels"],
+[class*="containerDefault"],
+[class*="membersWrap"],
+[class*="member_"] {
+  background-color: var(--term-panel) !important;
+}
+
+[class*="selected"] [class*="name"],
+[class*="modeSelected"] [class*="name"],
+[class*="channel"] [class*="interactive"]:hover,
+[class*="clickable"]:hover {
+  color: var(--term-green-bright) !important;
+}
+
+/* Header bars and section labels */
+[class*="title"],
+[class*="header"],
+[class*="topic"],
+[class*="nameplate"] {
+  color: var(--term-green) !important;
+}
+
+[class*="toolbar"],
+[class*="headerBar"],
+[class*="searchBar"] {
+  background-color: var(--term-panel) !important;
+  border-bottom: 1px solid var(--term-border);
+}
+
+/* Messages: understated terminal rows */
+[class*="messageListItem"],
+[class*="message_"] {
+  border-radius: 3px;
+}
+
+[class*="message_"]:hover {
+  background-color: rgb(49 120 67 / 9%) !important;
+}
+
+[class*="contents"] [class*="markup"],
+[class*="messageContent"],
+[class*="messageContent"] p {
+  color: var(--term-text);
+  line-height: 1.55;
+}
+
+[class*="username"],
+[class*="headerText"] {
+  color: var(--term-green-bright) !important;
+}
+
+[class*="timestamp"],
+[class*="timestampInline"] {
+  color: var(--term-muted) !important;
+  font-size: 0.78em;
+}
+
+/* Code blocks become terminal windows */
+[class*="markup"] code,
+[class*="codeBlock"],
+[class*="codeLine"],
+pre,
+code {
+  font-family: "Cascadia Code", "JetBrains Mono", "Fira Code", Consolas, monospace !important;
+}
+
+[class*="markup"] code,
+[class*="codeBlock"],
+pre {
+  background: #030604 !important;
+  border: 1px solid var(--term-border);
+  border-radius: 5px;
+  box-shadow: var(--term-glow);
+}
+
+[class*="markup"] code {
+  color: var(--term-green-bright) !important;
+}
+
+[class*="codeBlock"] {
+  padding: 10px;
+}
+
+/* Message composer */
+[class*="channelTextArea"],
+[class*="scrollableContainer"],
+[class*="inner_"][class*="inner"] {
+  background: var(--term-panel) !important;
+  border: 1px solid var(--term-border);
+  border-radius: 5px !important;
+  box-shadow: inset 0 0 0 1px rgb(102 255 138 / 3%);
+}
+
+[class*="placeholder"] {
+  color: var(--term-muted) !important;
+}
+
+[class*="textArea"] {
+  color: var(--term-text) !important;
+  font-family: "Cascadia Code", "JetBrains Mono", Consolas, monospace !important;
+}
+
+/* Buttons and interactive controls */
+button,
+[class*="button_"],
+[class*="lookFilled"],
+[class*="lookOutlined"],
+[class*="iconButton"] {
+  transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease;
+}
+
+[class*="lookFilled"],
+[class*="lookOutlined"] {
+  border: 1px solid var(--term-border) !important;
+  border-radius: 4px !important;
+}
+
+[class*="lookFilled"]:hover,
+[class*="lookOutlined"]:hover,
+button:hover {
+  border-color: var(--term-green) !important;
+}
+
+[class*="lookFilled"] {
+  background: #12351d !important;
+  color: var(--term-green-bright) !important;
+}
+
+[class*="lookFilled"]:hover {
+  background: #194927 !important;
+}
+
+/* Search, popouts, menus, and dialogs */
+[class*="popout"],
+[class*="menu"],
+[class*="menu"],
+[class*="modal"],
+[class*="root_"][class*="root"],
+[class*="autocomplete"],
+[class*="results"] {
+  background-color: var(--term-panel) !important;
+  border: 1px solid var(--term-border);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 45%), var(--term-glow);
+}
+
+[class*="item_"]:hover,
+[class*="focused"],
+[class*="option"]:hover {
+  background-color: var(--term-selection) !important;
+}
+
+/* Dividers and scrollbars */
+[class*="divider"],
+[class*="separator"],
+hr {
+  border-color: var(--term-border) !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--term-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #245536;
+  border: 2px solid var(--term-bg);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--term-green);
+}
+
+/* Links and text selection */
+a,
+[class*="anchor"] {
+  color: var(--term-green) !important;
+}
+
+a:hover,
+[class*="anchor"]:hover {
+  color: var(--term-green-bright) !important;
+  text-shadow: 0 0 7px rgb(102 255 138 / 25%);
+}
+
+::selection {
+  background: var(--term-selection);
+  color: #ffffff;
+}
+
+/* Status indicators */
+[class*="statusOnline"] {
+  background-color: var(--term-green) !important;
+}
+
+/* Reduced motion friendly */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
