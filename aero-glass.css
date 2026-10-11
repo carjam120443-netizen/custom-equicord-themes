@@ -1,0 +1,206 @@
+/*
+ * Aero Glass — Windows Vista / Windows 7-inspired theme for Equicord
+ * A cool blue glass aesthetic with glossy highlights, translucent-looking
+ * panels, soft gradients, and rounded window-like surfaces.
+ *
+ * Visual CSS only. Discord/Equicord selectors may change between versions.
+ */
+
+:root {
+  --aero-bg: #dcecf7;
+  --aero-panel: rgba(229, 243, 253, 0.92);
+  --aero-panel-strong: rgba(207, 230, 247, 0.96);
+  --aero-blue: #3c8edb;
+  --aero-blue-dark: #185a9d;
+  --aero-border: rgba(83, 139, 183, 0.72);
+  --aero-text: #18364d;
+  --aero-muted: #52748d;
+  --aero-glow: rgba(255, 255, 255, 0.82);
+  --aero-shadow: 0 5px 18px rgba(28, 73, 112, 0.20);
+}
+
+/* Overall desktop: frosty blue rather than a flat dark surface */
+.theme-dark,
+.theme-light {
+  --background-primary: #eaf5fc;
+  --background-secondary: #dcecf8;
+  --background-secondary-alt: #d2e6f5;
+  --background-tertiary: #c4dced;
+  --background-floating: rgba(233, 246, 255, 0.97);
+  --background-modifier-hover: rgba(72, 151, 216, 0.13);
+  --background-modifier-active: rgba(72, 151, 216, 0.22);
+  --background-modifier-selected: rgba(72, 151, 216, 0.19);
+  --channeltextarea-background: rgba(255, 255, 255, 0.82);
+  --text-normal: var(--aero-text);
+  --text-muted: var(--aero-muted);
+  --header-primary: #153c5b;
+  --header-secondary: #426985;
+  --interactive-normal: #315f82;
+  --interactive-hover: #174f80;
+  --interactive-active: #0d3d68;
+  --brand-experiment: var(--aero-blue);
+  --brand-experiment-560: var(--aero-blue-dark);
+}
+
+/* Main layout surfaces */
+[class*="app_"],
+[class*="appMount_"],
+[class*="bg_"] {
+  background-color: #dcecf7;
+}
+
+[class*="sidebar_"],
+[class*="container_"][class*="themed_"],
+[class*="membersWrap_"],
+[class*="chat_"] {
+  background: linear-gradient(
+    145deg,
+    rgba(245, 251, 255, 0.96) 0%,
+    rgba(218, 237, 250, 0.93) 55%,
+    rgba(201, 225, 243, 0.96) 100%
+  ) !important;
+}
+
+/* Glossy window-title/header surfaces */
+[class*="title_"],
+[class*="header_"],
+[class*="container_"][class*="header_"] {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.97) 0%,
+    rgba(225, 242, 253, 0.94) 48%,
+    rgba(196, 222, 242, 0.96) 100%
+  ) !important;
+  border-bottom: 1px solid var(--aero-border);
+  box-shadow: inset 0 1px 0 var(--aero-glow), 0 1px 4px rgba(41, 91, 132, 0.12);
+}
+
+/* Channels and server list: subtle glassy hover states */
+[class*="channel_"],
+[class*="item_"][class*="clickable_"] {
+  border-radius: 6px;
+  transition: background-color 120ms ease, box-shadow 120ms ease;
+}
+
+[class*="channel_"]:hover,
+[class*="item_"][class*="clickable_"]:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(111,181,229,.22)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 3px rgba(42,103,151,.12);
+}
+
+[class*="modeSelected_"],
+[class*="selected_"][class*="interactive_"] {
+  background: linear-gradient(180deg, #c5e5fb, #9fcdf0) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px #78b2df;
+}
+
+/* Messages remain clean and legible */
+[class*="message_"] {
+  border-radius: 5px;
+}
+
+[class*="message_"]:hover {
+  background: rgba(255, 255, 255, 0.38) !important;
+}
+
+[class*="messageContent_"],
+[class*="markup_"] {
+  color: var(--aero-text);
+}
+
+[class*="markup_"] a,
+a {
+  color: #075fa8;
+  text-decoration-color: rgba(7, 95, 168, 0.4);
+}
+
+/* Composer: inset glass panel */
+[class*="channelTextArea_"] {
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(224,241,252,.96)) !important;
+  border: 1px solid #8ab7d9;
+  border-radius: 9px;
+  box-shadow: inset 0 1px 3px rgba(35, 84, 124, .13), 0 1px 0 white;
+}
+
+[class*="placeholder_"] {
+  color: #64849b;
+}
+
+/* Glossy blue controls */
+button,
+[class*="button_"][class*="lookFilled_"] {
+  border: 1px solid #4d91c6 !important;
+  border-radius: 5px !important;
+  background: linear-gradient(180deg, #f9fdff 0%, #d4eafa 46%, #a9d1ef 100%) !important;
+  color: #164a72 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.98), 0 1px 2px rgba(31,83,124,.18);
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+}
+
+button:hover,
+[class*="button_"][class*="lookFilled_"]:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #e0f3ff 45%, #b5dcf7 100%) !important;
+  border-color: #277bb9 !important;
+}
+
+/* Menus, popouts, dialogs and tooltips */
+[class*="menu_"],
+[class*="popout_"],
+[class*="modal_"],
+[class*="tooltip_"],
+[class*="layer_"] [class*="root_"] {
+  background: linear-gradient(145deg, rgba(249, 253, 255, .98), rgba(213, 234, 249, .98)) !important;
+  color: var(--aero-text);
+  border: 1px solid #8eb9d9;
+  border-radius: 9px;
+  box-shadow: var(--aero-shadow), inset 0 1px 0 rgba(255,255,255,.98);
+  backdrop-filter: blur(14px);
+}
+
+/* Search and text inputs */
+input,
+textarea,
+[class*="input_"] {
+  color: var(--aero-text) !important;
+}
+
+[class*="searchBar_"],
+[class*="search_"] [class*="searchBar_"] {
+  background: rgba(255,255,255,.86) !important;
+  border: 1px solid #9bbfd9;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 2px rgba(33,78,114,.10);
+}
+
+/* Code blocks: blue-tinted glass instead of a black terminal */
+[class*="codeBlock_"],
+pre,
+code {
+  background: rgba(190, 218, 239, 0.78) !important;
+  border: 1px solid rgba(111, 159, 195, 0.55);
+  border-radius: 5px;
+  color: #173e5c !important;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b8d9f0, #76add6) !important;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(184, 215, 237, 0.36) !important;
+}
+
+/* Reduce motion for users who request it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
